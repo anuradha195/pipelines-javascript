@@ -12,5 +12,5 @@ steps:
     npm install
     npm test
     docker build -f Dockerfile -t $(dockerId)/$(imageName) .
-    echo "$MY_PASSWORD" | docker login -u $(dockerId) --password-stdin
+    $MY_PASSWORD | docker login -u $(dockerId) --password-stdin
     docker push $(dockerId)/$(imageName)
