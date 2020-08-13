@@ -3,10 +3,6 @@
 pool:
   vmImage: 'Ubuntu 16.04'
   
-variables:
-  imageName: 'pipelines-javascript-image'
-  dockerId: anuradha195
-
 steps:
 - script: |
     npm install
