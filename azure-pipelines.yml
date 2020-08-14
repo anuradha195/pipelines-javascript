@@ -15,5 +15,5 @@ steps:
 - task: PublishPipelineArtifact@1
   displayName: "Publish Artifact: $(Build.DefinitionName)-docker"
   inputs:
-    targetPath: $(System.DefaultWorkingDirectory)/bin/WebApp
+    targetPath: /
     artifactName: WebApp
