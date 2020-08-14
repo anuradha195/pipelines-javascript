@@ -10,3 +10,9 @@ steps:
     docker build -f Dockerfile -t $(dockerId)/$(imageName) .
     echo $(MY_PASSWORD) | docker login -u $(dockerId) --password-stdin
     docker push $(dockerId)/$(imageName)
+    
+- task: PublishBuildArtifacts@1
+  displayName: "Publish Artifact: $(Build.DefinitionName)-docker"
+  inputs:
+    PathtoPublish: ./
+    ArtifactName: docker
