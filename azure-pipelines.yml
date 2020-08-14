@@ -11,8 +11,8 @@ steps:
     echo $(MY_PASSWORD) | docker login -u $(dockerId) --password-stdin
     docker push $(dockerId)/$(imageName)
 
-- task: PublishBuildArtifacts@1
+- task: PublishPipelineArtifact@1
   displayName: "Publish Artifact: $(Build.DefinitionName)-docker"
   inputs:
-    PathtoPublish: ./
-    ArtifactName: docker
+    targetPath: $(System.DefaultWorkingDirectory)/bin/WebApp
+    artifactName: WebApp
