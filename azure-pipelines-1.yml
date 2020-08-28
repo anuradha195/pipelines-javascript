@@ -7,9 +7,11 @@ steps:
 - script: |
     npm install
     npm test
-    docker build -f Dockerfile -t $(dockerId)/$(imageName) .
-    echo $(MY_PASSWORD) | docker login -u $(dockerId) --password-stdin
-    docker push $(dockerId)/$(imageName)
+    #docker build -f Dockerfile -t $(dockerId)/$(imageName) .
+    #echo $(MY_PASSWORD) | docker login -u $(dockerId) --password-stdin
+    #docker push $(dockerId)/$(imageName)
+    #aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin https://365061040347.dkr.ecr.eu-central-1.amazonaws.com/ls-k8s-temp-ecr
+    aws ecr get-login --region eu-central-1 --no-include-email
     
 - task: PublishPipelineArtifact@1
   displayName: "Publish Artifact: $(Build.DefinitionName)-docker"
